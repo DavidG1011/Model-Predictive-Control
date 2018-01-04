@@ -1,3 +1,8 @@
+[//]: # (Image References)
+
+[image1]: ./imgs/equa.png
+
+
 # Udacity Model Predictive Control Project.
 
 Self-Driving Car Engineer Nanodegree Program
@@ -8,9 +13,13 @@ The rubric for this project is located --> [Here](https://review.udacity.com/#!/
 
 ## Model Type and Equations
 
-This program uses a kinematic model to calculate the t + 1 state vector from the current state vector. The model state uses x and y for vehicle coordinates, psi for orientation angle, v for velocity, cte for cross track error, and epsi for psi error. The actuators for the model (steering - acceleration/braking) are respectively delta and a. 
+This program uses a kinematic model to calculate the t + 1 state vector from the current state vector. The model state uses x and y for vehicle coordinates, psi for orientation angle, v for velocity, cte for cross track error, and epsi for psi error. 
+
+The actuators for the model (steering - acceleration/braking) are respectively delta and a. 
 
 The update equations are as follows:
+
+
 
 
 
