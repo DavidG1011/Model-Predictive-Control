@@ -12,14 +12,19 @@ The rubric for this project is located --> [Here](https://review.udacity.com/#!/
 ---
 
 ## Model Type and Equations
+The goal is to navigate a car around a track using the Udacity term 2 simulator. The model must keep the car within the drivable portion of the track and also be able to accound for a 100 ms delay between model outputs and simulator response. 
 
 This program uses a kinematic model to calculate the t + 1 state vector from the current state vector. The model state uses x and y for vehicle coordinates, psi for orientation angle, v for velocity, cte for cross track error, and epsi for psi error. 
 
 The actuators for the model (steering - acceleration/braking) are respectively delta and a. 
+This model uses the IPOPT and CPPAD libraries to calculate the lowest error trajectory and return the actuations needed to accomplish it.
 
 The update equations are as follows:
 
 ![alt text][image1]
+
+
+
 
 
 
