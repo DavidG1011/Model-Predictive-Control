@@ -2,7 +2,7 @@
 
 Self-Driving Car Engineer Nanodegree Program
 
-The rubric for this project is located [Here](https://review.udacity.com/#!/rubrics/896/view)
+The rubric for this project is located --> [Here](https://review.udacity.com/#!/rubrics/896/view).
 
 ---
 
