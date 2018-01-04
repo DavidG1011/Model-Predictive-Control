@@ -96,13 +96,8 @@ int main() {
           double psi = j[1]["psi"];
           double v = j[1]["speed"];
 
-          /*
-          * TODO: Calculate steering angle and throttle using MPC.
-          *
-          * Both are in between [-1, 1].
-          *
-          */
-
+          // Delta and a are between [-1 , 1]
+         
           // Initialize vectors for storing car perspective coordinates.
           Eigen::VectorXd transform_x(ptsx.size());
           Eigen::VectorXd transform_y(ptsy.size());
@@ -112,7 +107,7 @@ int main() {
           {
 
             // Get difference between global waypoints and global car pos.
-            // Code for this referred to from here: https://gamedev.stackexchange.com/a/79779
+            // Code referred to from here: https://gamedev.stackexchange.com/a/79779
             double x = ptsx[n] - px;
             double y = ptsy[n] - py;
             transform_x[n] = cos(-psi) * x - sin(-psi) * y;
@@ -138,14 +133,13 @@ int main() {
           double steer_value = solved[0] / (deg2rad(25));
           double throttle_value = solved[1];
 
-
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = throttle_value;
 
-
+          /*
           //Display the MPC predicted trajectory 
           vector<double> mpc_x_vals;
           vector<double> mpc_y_vals;
@@ -165,7 +159,7 @@ int main() {
 
           msgJson["next_x"] = next_x_vals;
           msgJson["next_y"] = next_y_vals;
-
+          */
 
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
