@@ -12,23 +12,46 @@ The rubric for this project is located --> [Here](https://review.udacity.com/#!/
 ---
 
 ## Model Type and Equations
-The goal is to navigate a car around a track using the Udacity term 2 simulator. The model must keep the car within the drivable portion of the track and also be able to accound for a 100 ms delay between model outputs and simulator response. 
+
+The goal is to navigate a car around a track using the Udacity term 2 simulator. The model must keep the car within the drivable portion of the track while accounting for a 100 ms delay between model outputs and simulator response. This delay is to emulate a more real-world scenario.
 
 This program uses a kinematic model to calculate the t + 1 state vector from the current state vector. The model state uses x and y for vehicle coordinates, psi for orientation angle, v for velocity, cte for cross track error, and epsi for psi error. 
 
 The actuators for the model (steering - acceleration/braking) are respectively delta and a. 
 This model uses the IPOPT and CPPAD libraries to calculate the lowest error trajectory and return the actuations needed to accomplish it.
 
-The update equations are as follows:
+The update equations for state variables are as follows:
 
 ![alt text][image1]
 
 
+## N and dt
+
+The duration of future predictions in the model can be chosen by adjusting the N and dt variables. The prediction horizon-- or T, is simply the product of N * dt. My model in an optimized state uses:
+
+N = 7
+dt = 0.15
+
+T = 7 * 0.15 = 1.05
+
+I arrived at these paramaters by trial and error, the most scientific of all methods. The initial values chosen were 15 and 0.25, based on lecture exercise numbers that I halved to be more responsive for a real time model. This proved to be too unresponsive due to some of the turns being sharper than others. A T of 3.75 was too high. I slowly widdled the number down from there to be more responsive with the model:
+
+* 15, 0.25  T =  3.75 -  Too high - Wobbly, ran over curb on sharp turns.
+* 12, 0.2   T =  2.4  -  Better - A bit less wobbly, still dangerous.
+* 10, 0.2   T =  1.5  -  Good - Would have kept, but sometimes got close to curb.
+* 7,  0.15  T =  1.05 -  Best - Drives a clean line with no issues.
 
 
+## Preprocessing
+
+The waypoint coordinates are transformed from global to vehicle perspective to simplify polyfitting.
+
+## Latency
+
+The main way latency is curbed is by keeping a low T value, which allows the system to still give relevant actuator input for the time frame needed. Supporting this are scalars, which highly penalizes cte and epsi to overcompensate. Even with delay, these keep the car in the optimal trajectory.  
 
 
-
+---
 
 
 ## Dependencies
