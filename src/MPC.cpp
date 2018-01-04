@@ -6,6 +6,11 @@
 
 using CppAD::AD;
 
+//---------------------------------------------------------------------------------------
+// Code referenced from 
+// https://github.com/udacity/CarND-MPC-Quizzes/blob/master/mpc_to_line/solution/MPC.cpp
+//---------------------------------------------------------------------------------------
+
 // Initialize N for time steps and dt for time between
 size_t N = 7;
 double dt = 0.15;
