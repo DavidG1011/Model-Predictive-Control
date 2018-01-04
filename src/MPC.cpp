@@ -128,7 +128,6 @@ class FG_eval
       AD<double> f0 = coeffs[0] + coeffs[1] * x0 + coeffs[2] * CppAD::pow(x0, 2) + coeffs[3] * CppAD::pow(x0, 3);
       AD<double> psides0 = CppAD::atan(coeffs[1] + 2 * coeffs[2] * x0 + 3 * coeffs[3] * CppAD::pow(x0, 2));
 
-
       // Constrain fg values to be 0 by subtracting t + 1 calculations.
       fg[1 + x_start + t] = x1 - (x0 + v0 * CppAD::cos(psi0) * dt);
       fg[1 + y_start + t] = y1 - (y0 + v0 * CppAD::sin(psi0) * dt);
@@ -136,7 +135,6 @@ class FG_eval
       fg[1 + v_start + t] = v1 - (v0 + a0 * dt);
       fg[1 + cte_start + t] = cte1 - ((y0 - f0) + (v0 * CppAD::sin(epsi0) * dt));
       fg[1 + epsi_start + t] = epsi1 - ((psi0 - psides0) + v0/Lf * delta0 * dt);
-
     }
   }
 };
@@ -288,7 +286,7 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs)
   output.push_back(solution.x[delta_start]);
   output.push_back(solution.x[a_start]);
 
-  // Could also return other values for plotting predicted line in sim-- works fine without.
+  // Could also return other values for plotting predicted line in sim-- just for visual.
 
   return output;
 }
