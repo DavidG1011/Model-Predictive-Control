@@ -34,9 +34,9 @@ dt = 0.15
 
 T = 7 * 0.15 = 1.05
 
-I arrived at these paramaters by trial and error, the most scientific of all methods. The initial values chosen were 15 and 0.25, based on lecture exercise numbers that I halved to be more responsive for a real time model. This proved to be too unresponsive due to some of the turns being sharper than others. A T of 3.75 was too high. I slowly widdled the number down from there to be more responsive with the model:
+I arrived at these paramaters by trial and error, the most scientific of all methods. The initial values chosen were 15 and 0.25, based on lecture exercise numbers that I halved to be more responsive for a real time model. This proved to be too unresponsive, likely due to latency compensation compounding itself into instability. Simply put, a T of 3.75 was too high. I slowly widdled the number down from there to be more responsive with the model:
 
-* 15, 0.25  T =  3.75 -  Too high - Wobbly, ran over curb on sharp turns.
+* 15, 0.25  T =  3.75 -  Too high - Oscillated out of control.
 * 12, 0.2   T =  2.4  -  Better - A bit less wobbly, still dangerous.
 * 10, 0.2   T =  1.5  -  Good - Would have kept, but sometimes got close to curb.
 * 7,  0.15  T =  1.05 -  Best - Drives a clean line with no issues.
@@ -48,7 +48,7 @@ The waypoint coordinates are transformed from global to vehicle perspective to s
 
 ## Latency
 
-The main way latency is curbed is by keeping a low T value, which allows the system to still give relevant actuator input for the time frame needed. Supporting this are scalars, which highly penalizes cte and epsi to overcompensate. Even with delay, these keep the car in the optimal trajectory.  
+The main way latency is curbed is by keeping a low T value, which allows the system to still give relevant actuator input for the time frame needed. Supporting this are scalars, which highly penalizes cte and epsi to overcompensate for bigger errors. Even with delay, these keep the car in the optimal trajectory.  
 
 
 ---
