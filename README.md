@@ -1,6 +1,6 @@
 [//]: # (Image References)
 
-[image1]: ./imgs/equa.png
+[image1]: ./imgs/equ.PNG
 
 
 # Udacity Model Predictive Control Project.
@@ -19,7 +19,7 @@ The actuators for the model (steering - acceleration/braking) are respectively d
 
 The update equations are as follows:
 
-
+![alt text][image1]
 
 
 
