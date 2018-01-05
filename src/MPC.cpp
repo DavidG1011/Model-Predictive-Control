@@ -63,7 +63,7 @@ class FG_eval
 
     // Add weight scalars to assert cost importance.
     // Higher = more important.
-    vector<int> ref = {3200, 4200};
+    vector<int> ref = {3500, 4500};
     vector<int> act = {5, 2};
     vector<int> actchange = {50, 2};
 

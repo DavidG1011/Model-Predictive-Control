@@ -96,7 +96,9 @@ int main() {
           double psi = j[1]["psi"];
           double v = j[1]["speed"];
 
+
           // Delta and a are between [-1 , 1]
+
          
           // Initialize vectors for storing car perspective coordinates.
           Eigen::VectorXd transform_x(ptsx.size());
@@ -139,7 +141,6 @@ int main() {
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = throttle_value;
 
-          /*
           //Display the MPC predicted trajectory 
           vector<double> mpc_x_vals;
           vector<double> mpc_y_vals;
@@ -159,7 +160,6 @@ int main() {
 
           msgJson["next_x"] = next_x_vals;
           msgJson["next_y"] = next_y_vals;
-          */
 
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
